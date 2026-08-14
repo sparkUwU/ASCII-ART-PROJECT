@@ -20,7 +20,13 @@ except Exception:
 gray_image = image.convert("L")
 gray_image.save("gray.jpg")
 
-new_width = 100
+
+try:
+    new_width = int(input("Enter ASCII width: "))
+except ValueError:
+    print("Please enter a number.")
+    exit()
+
 new_height = int(gray_image.height * new_width / gray_image.width * 0.5)
 gray_image = gray_image.resize((new_width, new_height))
 
@@ -32,7 +38,6 @@ for y in range(gray_image.height):
 
         index = pixel * len(chars) // 256
 
-        print(chars[index], end="")
         ascii_art += chars[index]
 
     ascii_art += "\n"

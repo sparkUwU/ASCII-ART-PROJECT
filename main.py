@@ -24,6 +24,7 @@ new_width = 100
 new_height = int(gray_image.height * new_width / gray_image.width * 0.5)
 gray_image = gray_image.resize((new_width, new_height))
 
+ascii_art = ""
 
 for y in range(gray_image.height):
     for x in range(gray_image.width):
@@ -32,5 +33,13 @@ for y in range(gray_image.height):
         index = pixel * len(chars) // 256
 
         print(chars[index], end="")
+        ascii_art += chars[index]
 
-    print()
+    ascii_art += "\n"
+
+print(ascii_art)
+
+with open("ascii_art.txt", "w") as file:
+    file.write(ascii_art)
+
+print("ASCII art saved to ascii_art.txt")

@@ -1,8 +1,22 @@
 from PIL import Image
+import os
 
-chars = "@#*+-. "
+chars = "@%#*+=-:. "
 
-image = Image.open("main.png")
+print("python is looking in: ")
+print(os.getcwd())
+
+filename = input("Enter the image filename: ")
+
+try:
+    image = Image.open(filename)
+except FileNotFoundError:
+    print("File Not Found!!!")
+    exit()
+except Exception:
+    print("That isn't a valid image.")
+    exit()
+
 gray_image = image.convert("L")
 gray_image.save("gray.jpg")
 
